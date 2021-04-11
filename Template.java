@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Solution {
 
+    Pair<Integer,Integer> p ;
 
     // static int solve(int[] arr) {
     //     int n = arr.length;
@@ -62,6 +63,22 @@ class FastReader {
 
     String nextString() {
         return st.nextToken();
+    }
+
+}
+
+class Pair<K,V> {
+    K key;
+    V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + key + ", " + value + ")";
     }
 
 }
