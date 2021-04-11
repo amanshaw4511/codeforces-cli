@@ -31,6 +31,13 @@ public class Solution {
 
         }
     }
+
+    void print(Object... o) {
+        int n = o.length;
+        for (int i=0; i<n-1; i++)
+            System.out.print(o[i] + " ");
+        System.out.println(o[n-1]);
+    }
 }
 
 class FastReader {
