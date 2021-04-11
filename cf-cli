@@ -1,0 +1,20 @@
+#!/bin/bash
+
+CONTEST=$1
+CF_URL="https://codeforces.com/contest"
+INSTALL_DIR=$HOME/.local/share/cf-cli
+ 
+for i in a b c d e f g
+do
+    mkdir "$i"
+    cd "$i"
+
+    curl "$CF_URL/$CONTEST/problem/$i" > .temp_file 
+    cat .temp_file | pup 'div.input pre text{}' | sed '$ d' > input1 
+    cat .temp_file | pup 'div.output pre text{}' | sed '$ d' > output1 
+
+    cp "$INSTALL_DIR/Template.java" ./Solution.java
+    cp "$INSTALL_DIR/test" ./
+
+    cd ..
+done
