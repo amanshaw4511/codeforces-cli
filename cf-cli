@@ -3,18 +3,28 @@
 CONTEST=$1
 CF_URL="https://codeforces.com/contest"
 INSTALL_DIR=$HOME/.local/share/cf-cli
+TEMP_FILE=$(mktemp)
  
 for i in a b c d e f g
 do
-    mkdir "$i"
-    cd "$i"
+    echo $TEMP_FILE
+    curl "$CF_URL/$CONTEST/problem/$i" > $TEMP_FILE
 
-    curl "$CF_URL/$CONTEST/problem/$i" > .temp_file 
-    cat .temp_file | pup 'div.input pre text{}' | sed '$ d' > input1 
-    cat .temp_file | pup 'div.output pre text{}' | sed '$ d' > output1 
+    f=$(head -1 $TEMP_FILE)
+    if [ f ]
+    then
+        mkdir "$i"
+        cd "$i"
 
-    cp "$INSTALL_DIR/Template.java" ./Solution.java
-    cp "$INSTALL_DIR/test" ./
+        cat $TEMP_FILE | pup 'div.input pre text{}' | sed '$ d' > input1 
+        cat $TEMP_FILE | pup 'div.output pre text{}' | sed '$ d' > output1 
 
-    cd ..
+        cp "$INSTALL_DIR/Template.java" ./Solution.java
+        cp "$INSTALL_DIR/test" ./
+
+        cd ..
+    fi
 done
+
+
+rm $TEMP_FILE
