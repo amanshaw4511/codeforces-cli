@@ -4,14 +4,16 @@ CONTEST=$1
 CF_URL="https://codeforces.com/contest"
 INSTALL_DIR=$HOME/.local/share/cf-cli
 TEMP_FILE=$(mktemp)
+
+
+status_code=$(curl --head --write-out %{http_code} --silent --output /dev/null "$CF_URL/$CONTEST")
+[ $status_code -ne 200 ] && exit
  
 for i in a b c d e f g
 do
-    echo $TEMP_FILE
-    curl "$CF_URL/$CONTEST/problem/$i" > $TEMP_FILE
+    status_code=$(curl --write-out %{http_code} --silent --output $TEMP_FILE "$CF_URL/$CONTEST/problem/$i")
 
-    f=$(head -1 $TEMP_FILE)
-    if [ f ]
+    if [[ status_code -eq 200 ]]
     then
         mkdir "$i"
         cd "$i"
