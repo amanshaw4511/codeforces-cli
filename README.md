@@ -5,13 +5,13 @@ codeforces cli written in shell script for parsing contests input , output and a
 * [pup](https://github.com/ericchiang/pup) - CLI tool for processing HTML.
 
 ## Installation
-'''sh
+```sh
 $ git clone https://github.com/amanshaw4511/codeforces-cli.git
 $ cd codefores-cli
 $ ./install.sh
-'''
+```
 ## Usage
-'''sh
+```sh
 Syntax : cf-cli <contest-code>
  
 Example :
@@ -56,11 +56,10 @@ $ tree
 └── test
 
 7 directories, 28 files
-$ 
-'''
+```
 
 ## Testing
-'''sh
+```sh
 $ cd a
 $ ls
 input1  output1  Solution.java  test
@@ -86,11 +85,10 @@ your output :
 1
 5
 3
-$ 
-'''
+```
 To test custom input against output
-'''
+```
 $ ls
 input1  output1  Solution.java  test   myinput   myoutput
 $ .test -t myinput myoutput
-'''
+```
