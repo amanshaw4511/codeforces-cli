@@ -34,13 +34,30 @@ test_all() {
             test_this
         fi
     }
+}
 
+display_help() {
+    cat << EOL
+Usage
+    cf-cli [OPTION] file..
+Options
+    -a      test all input files starting wiht "input" name
+    -t      test custom input against custom output
+    -h      display this help
+
+Example
+    test all input output :
+        cf-cli -a
+    test one input output :
+        cf-cli -t my_input_file my_output_file
+EOL
 }
 
 
 case "$OPTION" in
     "-t") test_this ;;
     "-a") test_all ;;
-    *) echo wrong Syntax ;;
+    "-h") display_help ;;
+    *) display_help ;;
 esac
 
