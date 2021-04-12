@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Solution {
 
-    Pair<Integer,Integer> p ;
-
     // static int solve(int[] arr) {
     //     int n = arr.length;
     //     return 0;
@@ -32,7 +30,22 @@ public class Solution {
         }
     }
 
-    void print(Object... o) {
+    
+    static void println(Object... o) {
+        int n = o.length;
+        for (int i=0; i<n-1; i++)
+            System.out.print(o[i] + " ");
+        System.out.println(o[n-1]);
+    }
+
+    static void print(Object... o) {
+        int n = o.length;
+        for (int i=0; i<n-1; i++)
+            System.out.print(o[i] + " ");
+        System.out.print(o[n-1]);
+    }
+
+    static void printArray(Object[] o) {
         int n = o.length;
         for (int i=0; i<n-1; i++)
             System.out.print(o[i] + " ");
